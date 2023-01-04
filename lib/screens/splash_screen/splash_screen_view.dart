@@ -1,5 +1,6 @@
 import 'package:vault/screens/sign_in_screen/sign_in_screen_view.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SplashScreenView extends StatefulWidget {
   const SplashScreenView({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
       () {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (builder) => const SignInScreenView()),
+          MaterialPageRoute(builder: (context) => const SignInScreenView()),
         );
       },
     );
@@ -25,9 +26,13 @@ class _SplashScreenViewState extends State<SplashScreenView> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text("Splash Screen View"),
+        child: SizedBox(
+          height: 35.w,
+          width: 35.w,
+          child: Image.asset("assets/images/flutter-logo-with-label.png"),
+        ),
       ),
     );
   }

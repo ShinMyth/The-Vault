@@ -1,5 +1,6 @@
 import 'package:vault/screens/account_details_screen/account_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AccountsScreenView extends StatefulWidget {
   const AccountsScreenView({Key? key}) : super(key: key);
@@ -16,24 +17,31 @@ class _AccountsScreenViewState extends State<AccountsScreenView> {
         title: const Text("Accounts"),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text("Accounts Screen View"),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (builder) => const AccountDetailsScreenView()),
-                );
-              },
-              child: const Text("Account Details"),
-            )
-          ],
-        ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),
+        child: ListView.builder(
+            itemCount: 20,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AccountDetailsScreenView(),
+                    ),
+                  );
+                },
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(3.w),
+                    child: const ListTile(
+                      leading: Icon(Icons.facebook),
+                      title: Text("Facebook"),
+                    ),
+                  ),
+                ),
+              );
+            }),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
