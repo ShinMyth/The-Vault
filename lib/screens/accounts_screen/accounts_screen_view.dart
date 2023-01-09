@@ -1,4 +1,5 @@
 import 'package:vault/screens/account_details_screen/account_details_screen.dart';
+import 'package:vault/screens/add_account_screen/add_account_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -44,7 +45,12 @@ class _AccountsScreenViewState extends State<AccountsScreenView> {
             }),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const AddAccountScreenView(),
+          ),
+        ),
         child: const Icon(Icons.add),
       ),
     );

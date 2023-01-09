@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class AccountDetailsScreenView extends StatefulWidget {
-  const AccountDetailsScreenView({Key? key}) : super(key: key);
+class AddAccountDetailsScreenView extends StatefulWidget {
+  const AddAccountDetailsScreenView({Key? key}) : super(key: key);
 
   @override
-  State<AccountDetailsScreenView> createState() =>
-      _AccountDetailsScreenViewState();
+  State<AddAccountDetailsScreenView> createState() =>
+      _AddAccountDetailsScreenViewState();
 }
 
-class _AccountDetailsScreenViewState extends State<AccountDetailsScreenView> {
+class _AddAccountDetailsScreenViewState
+    extends State<AddAccountDetailsScreenView> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Account Details"),
+          title: const Text("Add Account Details"),
           centerTitle: true,
           actions: [
             IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.edit),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.delete),
+              icon: const Icon(Icons.add),
             ),
           ],
         ),
