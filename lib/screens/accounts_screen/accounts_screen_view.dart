@@ -1,4 +1,4 @@
-import 'package:vault/screens/account_details_screen/account_details_screen.dart';
+import 'package:vault/screens/account_details_screen/account_details_screen_view.dart';
 import 'package:vault/screens/add_account_screen/add_account_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -24,14 +24,12 @@ class _AccountsScreenViewState extends State<AccountsScreenView> {
             itemCount: 20,
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AccountDetailsScreenView(),
-                    ),
-                  );
-                },
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AccountDetailsScreenView(),
+                  ),
+                ),
                 child: Card(
                   child: Padding(
                     padding: EdgeInsets.all(3.w),

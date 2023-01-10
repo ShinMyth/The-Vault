@@ -1,4 +1,4 @@
-import 'package:vault/screens/sign_in_screen/sign_in_screen_view.dart';
+import 'package:vault/screens/pin_verification_screen/pin_verification_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -14,12 +14,12 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   void initState() {
     Future.delayed(
       const Duration(milliseconds: 2500),
-      () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const SignInScreenView()),
-        );
-      },
+      () => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const PinVerificationScreenView(),
+        ),
+      ),
     );
     super.initState();
   }

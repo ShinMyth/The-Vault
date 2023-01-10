@@ -1,20 +1,22 @@
-import 'package:vault/screens/sign_in_screen/sign_in_screen_controller.dart';
+import 'package:vault/screens/set_pin_confirmation_screen/set_pin_confirmation_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class SignInScreenView extends StatefulWidget {
-  const SignInScreenView({Key? key}) : super(key: key);
+class SetPinConfirmationScreenView extends StatefulWidget {
+  const SetPinConfirmationScreenView({Key? key}) : super(key: key);
 
   @override
-  State<SignInScreenView> createState() => _SignInScreenViewState();
+  State<SetPinConfirmationScreenView> createState() =>
+      _SetPinConfirmationScreenViewState();
 }
 
-class _SignInScreenViewState extends State<SignInScreenView> {
-  late SignInScreenController controller;
+class _SetPinConfirmationScreenViewState
+    extends State<SetPinConfirmationScreenView> {
+  late SetPinConfirmationScreenController controller;
 
   @override
   void initState() {
-    controller = SignInScreenController(
+    controller = SetPinConfirmationScreenController(
       setstate: () => setState(() {}),
       context: context,
     );
@@ -29,6 +31,8 @@ class _SignInScreenViewState extends State<SignInScreenView> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            const Text("Confirm Pin"),
+            SizedBox(height: 8.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
