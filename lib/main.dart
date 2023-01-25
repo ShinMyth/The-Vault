@@ -2,11 +2,14 @@ import 'package:vault/screens/splash_screen/splash_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  await Firebase.initializeApp();
 
   runApp(const MyApp());
 }

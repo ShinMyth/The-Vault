@@ -38,6 +38,12 @@ dependencies:
   # Responsive Sizer helps implement a responsive layout by providing helper widgets and extensions.
   responsive_sizer: ^3.1.1
 
+  # A Flutter plugin to use the Firebase Core API.
+  firebase_core: 1.16.0
+
+dependency_overrides:
+  firebase_core_platform_interface: 4.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
