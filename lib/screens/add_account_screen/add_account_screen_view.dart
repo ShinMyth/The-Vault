@@ -1,4 +1,5 @@
 import 'package:vault/screens/add_account_screen/widgets/custom_account.dart';
+import 'package:vault/screens/add_account_screen/add_account_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -10,6 +11,19 @@ class AddAccountScreenView extends StatefulWidget {
 }
 
 class _AddAccountScreenViewState extends State<AddAccountScreenView> {
+  late AddAccountScreenController controller;
+
+  @override
+  void initState() {
+    controller = AddAccountScreenController(
+      setstate: () => setState(() {}),
+      context: context,
+    );
+
+    controller.getAccountsData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,28 +31,13 @@ class _AddAccountScreenViewState extends State<AddAccountScreenView> {
         title: const Text("Add Account"),
         centerTitle: true,
       ),
-      body: SizedBox(
-        height: 100.h,
-        width: 100.w,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text("Social Media"),
-              SizedBox(height: 1.h),
-              GridView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
-                itemCount: 7,
-                itemBuilder: (context, index) {
-                  return const CustomAccount();
-                },
-              ),
-            ],
-          ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),
+        child: ListView.builder(
+          itemCount: controller.accounts.length,
+          itemBuilder: (context, index) {
+            return CustomAccount(account: controller.accounts[index]);
+          },
         ),
       ),
     );

@@ -1,8 +1,15 @@
+import 'package:vault/models/account_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class AddAccountDetailsScreenView extends StatefulWidget {
-  const AddAccountDetailsScreenView({Key? key}) : super(key: key);
+  const AddAccountDetailsScreenView({
+    Key? key,
+    required this.accountItem,
+  }) : super(key: key);
+
+  final AccountItem accountItem;
 
   @override
   State<AddAccountDetailsScreenView> createState() =>
@@ -35,9 +42,21 @@ class _AddAccountDetailsScreenViewState
                 padding: EdgeInsets.all(3.w),
                 child: Row(
                   children: [
-                    const Icon(Icons.facebook),
-                    SizedBox(width: 7.w),
-                    const Text("Facebook"),
+                    Container(
+                      height: 10.w,
+                      width: 10.w,
+                      color: Colors.white,
+                      child: CachedNetworkImage(
+                        imageUrl: widget.accountItem.accountItemImage,
+                      ),
+                    ),
+                    SizedBox(width: 5.w),
+                    Text(
+                      widget.accountItem.accountItemName,
+                      style: TextStyle(
+                        fontSize: 17.sp,
+                      ),
+                    ),
                   ],
                 ),
               ),
