@@ -48,6 +48,10 @@ class _AddAccountDetailsScreenViewState
                       color: Colors.white,
                       child: CachedNetworkImage(
                         imageUrl: widget.accountItem.accountItemImage,
+                        placeholder: (context, url) =>
+                            Image.asset("assets/images/flutter-logo.png"),
+                        errorWidget: (context, url, error) =>
+                            Image.asset("assets/images/flutter-logo.png"),
                       ),
                     ),
                     SizedBox(width: 5.w),

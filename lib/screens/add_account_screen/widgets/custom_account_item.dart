@@ -5,8 +5,10 @@ import 'package:vault/screens/add_account_details_screen/add_account_details_scr
 import 'package:flutter/material.dart';
 
 class CustomAccountItem extends StatefulWidget {
-  const CustomAccountItem({Key? key, required this.accountItem})
-      : super(key: key);
+  const CustomAccountItem({
+    Key? key,
+    required this.accountItem,
+  }) : super(key: key);
 
   final AccountItem accountItem;
 
@@ -31,6 +33,10 @@ class _CustomAccountItemState extends State<CustomAccountItem> {
           padding: EdgeInsets.all(5.w),
           child: CachedNetworkImage(
             imageUrl: widget.accountItem.accountItemImage,
+            placeholder: (context, url) =>
+                Image.asset("assets/images/flutter-logo.png"),
+            errorWidget: (context, url, error) =>
+                Image.asset("assets/images/flutter-logo.png"),
           ),
         ),
       ),
