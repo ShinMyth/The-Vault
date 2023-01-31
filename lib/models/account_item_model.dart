@@ -5,12 +5,16 @@ class AccountItem {
   String accountItemImage;
   String accountItemName;
   int accountItemOrder;
+  String accountItemUsername;
+  String accountItemPassword;
 
   AccountItem({
     required this.accountItemID,
     required this.accountItemImage,
     required this.accountItemName,
     required this.accountItemOrder,
+    required this.accountItemUsername,
+    required this.accountItemPassword,
   });
 
   factory AccountItem.fromFirestore(
@@ -24,6 +28,18 @@ class AccountItem {
       accountItemImage: data?['accountItemImage'],
       accountItemName: data?['accountItemName'],
       accountItemOrder: data?['accountItemOrder'],
+      accountItemUsername: "",
+      accountItemPassword: "",
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accountItemID': accountItemID,
+      'accountItemImage': accountItemImage,
+      'accountItemName': accountItemName,
+      'accountItemUsername': accountItemUsername,
+      'accountItemPassword': accountItemPassword,
+    };
   }
 }

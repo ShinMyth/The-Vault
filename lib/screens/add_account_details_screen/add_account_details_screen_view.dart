@@ -2,6 +2,7 @@ import 'package:vault/models/account_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:vault/screens/add_account_details_screen/add_account_details_screen_controller.dart';
 
 class AddAccountDetailsScreenView extends StatefulWidget {
   const AddAccountDetailsScreenView({
@@ -18,6 +19,17 @@ class AddAccountDetailsScreenView extends StatefulWidget {
 
 class _AddAccountDetailsScreenViewState
     extends State<AddAccountDetailsScreenView> {
+  late AddAccountDetailsScreenController controller;
+
+  @override
+  void initState() {
+    controller = AddAccountDetailsScreenController(
+      setstate: () => setState(() {}),
+      context: context,
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -28,7 +40,8 @@ class _AddAccountDetailsScreenViewState
           centerTitle: true,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () =>
+                  controller.insertAccountItem(accountItem: widget.accountItem),
               icon: const Icon(Icons.add),
             ),
           ],
@@ -68,11 +81,15 @@ class _AddAccountDetailsScreenViewState
               SizedBox(height: 3.h),
               const Text("Username"),
               SizedBox(height: 1.h),
-              const TextField(),
+              TextField(
+                controller: controller.username,
+              ),
               SizedBox(height: 3.h),
               const Text("Password"),
               SizedBox(height: 1.h),
-              const TextField(),
+              TextField(
+                controller: controller.password,
+              ),
             ],
           ),
         ),

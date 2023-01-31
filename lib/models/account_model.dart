@@ -5,7 +5,7 @@ class Account {
   String accountID;
   String accountName;
   int accountOrder;
-  List<AccountItem> accountItems = [];
+  List<AccountItem> accountItems;
 
   Account({
     required this.accountID,
