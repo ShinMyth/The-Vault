@@ -1,4 +1,4 @@
-import 'package:vault/screens/pin_verification_screen/pin_verification_screen_view.dart';
+import 'package:vault/screens/splash_screen/splash_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -10,17 +10,16 @@ class SplashScreenView extends StatefulWidget {
 }
 
 class _SplashScreenViewState extends State<SplashScreenView> {
+  late SplashScreenController controller;
+
   @override
   void initState() {
-    Future.delayed(
-      const Duration(milliseconds: 2500),
-      () => Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const PinVerificationScreenView(),
-        ),
-      ),
+    controller = SplashScreenController(
+      setstate: () => setState(() {}),
+      context: context,
     );
+
+    controller.initializeSqfliteDatabase();
     super.initState();
   }
 

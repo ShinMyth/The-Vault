@@ -42,4 +42,15 @@ class AccountItem {
       'accountItemPassword': accountItemPassword,
     };
   }
+
+  factory AccountItem.fromMap(Map<String, dynamic> map) {
+    return AccountItem(
+      accountItemID: map['accountItemID'] as String,
+      accountItemImage: map['accountItemImage'] as String,
+      accountItemName: map['accountItemName'] as String,
+      accountItemOrder: 0,
+      accountItemUsername: map['accountItemUsername'] as String,
+      accountItemPassword: map['accountItemPassword'] as String,
+    );
+  }
 }
