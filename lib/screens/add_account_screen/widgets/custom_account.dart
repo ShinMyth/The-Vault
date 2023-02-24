@@ -1,4 +1,5 @@
 import 'package:vault/models/account_model.dart';
+import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
 import 'package:vault/screens/add_account_screen/widgets/custom_account_item.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -7,9 +8,11 @@ class CustomAccount extends StatefulWidget {
   const CustomAccount({
     Key? key,
     required this.account,
+    required this.accountsScreenController,
   }) : super(key: key);
 
   final Account account;
+  final AccountsScreenController accountsScreenController;
 
   @override
   State<CustomAccount> createState() => _CustomAccountState();
@@ -39,6 +42,7 @@ class _CustomAccountState extends State<CustomAccount> {
                 itemBuilder: (context, index) {
                   return CustomAccountItem(
                     accountItem: widget.account.accountItems[index],
+                    accountsScreenController: widget.accountsScreenController,
                   );
                 },
               ),

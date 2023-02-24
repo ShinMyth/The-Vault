@@ -1,14 +1,17 @@
 import 'package:vault/models/account_item_model.dart';
+import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
 import 'package:vault/services/account_service.dart';
 import 'package:flutter/material.dart';
 
 class AccountDetailsScreenController {
   final Function() setstate;
   final BuildContext context;
+  final AccountsScreenController accountsScreenController;
 
   AccountDetailsScreenController({
     required this.setstate,
     required this.context,
+    required this.accountsScreenController,
   });
 
   TextEditingController username = TextEditingController();
@@ -27,11 +30,15 @@ class AccountDetailsScreenController {
 
     await AccountService().updateAccountItem(accountItem: accountItem);
 
+    await accountsScreenController.queryAccountItem();
+
     Navigator.pop(context);
   }
 
   Future<void> deleteAccountItem({required AccountItem accountItem}) async {
     await AccountService().deleteAccountItem(accountItem: accountItem);
+
+    await accountsScreenController.queryAccountItem();
 
     Navigator.pop(context);
   }

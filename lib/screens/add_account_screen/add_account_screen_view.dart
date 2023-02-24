@@ -1,10 +1,16 @@
+import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
 import 'package:vault/screens/add_account_screen/widgets/custom_account.dart';
 import 'package:vault/screens/add_account_screen/add_account_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AddAccountScreenView extends StatefulWidget {
-  const AddAccountScreenView({Key? key}) : super(key: key);
+  const AddAccountScreenView({
+    Key? key,
+    required this.accountsScreenController,
+  }) : super(key: key);
+
+  final AccountsScreenController accountsScreenController;
 
   @override
   State<AddAccountScreenView> createState() => _AddAccountScreenViewState();
@@ -36,7 +42,10 @@ class _AddAccountScreenViewState extends State<AddAccountScreenView> {
         child: ListView.builder(
           itemCount: controller.accounts.length,
           itemBuilder: (context, index) {
-            return CustomAccount(account: controller.accounts[index]);
+            return CustomAccount(
+              account: controller.accounts[index],
+              accountsScreenController: widget.accountsScreenController,
+            );
           },
         ),
       ),

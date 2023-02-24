@@ -3,14 +3,17 @@ import 'package:vault/screens/account_details_screen/account_details_screen_cont
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
 
 class AccountDetailsScreenView extends StatefulWidget {
   const AccountDetailsScreenView({
     Key? key,
     required this.accountItem,
+    required this.accountsScreenController,
   }) : super(key: key);
 
   final AccountItem accountItem;
+  final AccountsScreenController accountsScreenController;
 
   @override
   State<AccountDetailsScreenView> createState() =>
@@ -25,6 +28,7 @@ class _AccountDetailsScreenViewState extends State<AccountDetailsScreenView> {
     controller = AccountDetailsScreenController(
       setstate: () => setState(() {}),
       context: context,
+      accountsScreenController: widget.accountsScreenController,
     );
 
     controller.setAccountData(accountItem: widget.accountItem);

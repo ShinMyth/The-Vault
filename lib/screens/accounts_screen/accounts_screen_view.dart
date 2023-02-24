@@ -45,6 +45,7 @@ class _AccountsScreenViewState extends State<AccountsScreenView> {
                   MaterialPageRoute(
                     builder: (context) => AccountDetailsScreenView(
                       accountItem: accounts[index],
+                      accountsScreenController: controller,
                     ),
                   ),
                 ),
@@ -75,7 +76,9 @@ class _AccountsScreenViewState extends State<AccountsScreenView> {
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const AddAccountScreenView(),
+            builder: (context) => AddAccountScreenView(
+              accountsScreenController: controller,
+            ),
           ),
         ),
         child: const Icon(Icons.add),
