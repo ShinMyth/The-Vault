@@ -1,9 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:vault/constants/app_colors.dart';
 import 'package:vault/models/account_item_model.dart';
 import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
 import 'package:vault/screens/add_account_details_screen/add_account_details_screen_view.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CustomAccountItem extends StatefulWidget {
   const CustomAccountItem({
@@ -32,15 +33,22 @@ class _CustomAccountItemState extends State<CustomAccountItem> {
           ),
         ),
       ),
-      child: Card(
-        child: Padding(
-          padding: EdgeInsets.all(5.w),
+      child: Container(
+        decoration: BoxDecoration(
+          color: color06,
+          border: Border.all(
+            color: color04,
+          ),
+          borderRadius: BorderRadius.circular(7.5),
+        ),
+        child: Center(
           child: CachedNetworkImage(
             imageUrl: widget.accountItem.accountItemImage,
-            placeholder: (context, url) =>
-                Image.asset("assets/images/flutter-logo.png"),
             errorWidget: (context, url, error) =>
                 Image.asset("assets/images/flutter-logo.png"),
+            width: 11.w,
+            height: 11.w,
+            fit: BoxFit.contain,
           ),
         ),
       ),

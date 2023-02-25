@@ -1,7 +1,7 @@
 import 'package:vault/models/account_item_model.dart';
-import 'package:flutter/material.dart';
 import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
 import 'package:vault/services/account_service.dart';
+import 'package:flutter/material.dart';
 
 class AddAccountDetailsScreenController {
   final Function() setstate;

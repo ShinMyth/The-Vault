@@ -1,6 +1,6 @@
+import 'package:vault/screens/set_pin_screen/set_pin_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:vault/screens/set_pin_screen/set_pin_screen_controller.dart';
 
 class SetPinScreenView extends StatefulWidget {
   const SetPinScreenView({Key? key}) : super(key: key);

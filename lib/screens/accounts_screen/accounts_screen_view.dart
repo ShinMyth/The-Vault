@@ -1,3 +1,4 @@
+import 'package:vault/constants/app_colors.dart';
 import 'package:vault/screens/account_details_screen/account_details_screen_view.dart';
 import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
 import 'package:vault/screens/add_account_screen/add_account_screen_view.dart';
@@ -31,46 +32,74 @@ class _AccountsScreenViewState extends State<AccountsScreenView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Accounts"),
+        title: Text(
+          "THE VAULT",
+          style: TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         centerTitle: true,
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),
-        child: ListView.builder(
-            itemCount: accounts.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AccountDetailsScreenView(
-                      accountItem: accounts[index],
-                      accountsScreenController: controller,
-                    ),
+        child: accounts.isEmpty
+            ? Center(
+                child: Text(
+                  "There are no accounts found.",
+                  style: TextStyle(
+                    fontSize: 17.5.sp,
                   ),
                 ),
-                child: Card(
-                  child: Padding(
-                    padding: EdgeInsets.all(3.w),
-                    child: ListTile(
-                      leading: Container(
-                        height: 10.w,
-                        width: 10.w,
-                        color: Colors.white,
-                        child: CachedNetworkImage(
-                          imageUrl: accounts[index].accountItemImage,
-                          placeholder: (context, url) =>
-                              Image.asset("assets/images/flutter-logo.png"),
-                          errorWidget: (context, url, error) =>
-                              Image.asset("assets/images/flutter-logo.png"),
+              )
+            : ListView.builder(
+                physics: const ClampingScrollPhysics(),
+                padding: EdgeInsets.zero,
+                itemCount: accounts.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AccountDetailsScreenView(
+                          accountItem: accounts[index],
+                          accountsScreenController: controller,
                         ),
                       ),
-                      title: Text(accounts[index].accountItemName),
                     ),
-                  ),
-                ),
-              );
-            }),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 2.w,
+                        horizontal: 1.w,
+                      ),
+                      margin: EdgeInsets.only(bottom: 3.w),
+                      decoration: BoxDecoration(
+                        color: color06,
+                        border: Border.all(
+                          color: color04,
+                        ),
+                        borderRadius: BorderRadius.circular(7.5),
+                      ),
+                      child: ListTile(
+                        leading: CachedNetworkImage(
+                          imageUrl: accounts[index].accountItemImage,
+                          errorWidget: (context, url, error) =>
+                              Image.asset("assets/images/flutter-logo.png"),
+                          width: 11.w,
+                          height: 11.w,
+                          fit: BoxFit.contain,
+                        ),
+                        title: Text(
+                          accounts[index].accountItemName,
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(

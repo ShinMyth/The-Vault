@@ -35,8 +35,10 @@ class _CustomAccountState extends State<CustomAccount> {
               GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
+                  crossAxisSpacing: 3.w,
+                  mainAxisSpacing: 3.w,
                 ),
                 itemCount: widget.account.accountItems.length,
                 itemBuilder: (context, index) {

@@ -1,9 +1,10 @@
+import 'package:vault/constants/app_colors.dart';
 import 'package:vault/models/account_item_model.dart';
+import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
+import 'package:vault/screens/add_account_details_screen/add_account_details_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
-import 'package:vault/screens/add_account_details_screen/add_account_details_screen_controller.dart';
 
 class AddAccountDetailsScreenView extends StatefulWidget {
   const AddAccountDetailsScreenView({
@@ -40,7 +41,13 @@ class _AddAccountDetailsScreenViewState
       onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Add Account Details"),
+          title: Text(
+            "ADD ACCOUNT DETAILS",
+            style: TextStyle(
+              fontSize: 18.5.sp,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
           centerTitle: true,
           actions: [
             IconButton(
@@ -59,40 +66,45 @@ class _AddAccountDetailsScreenViewState
                 padding: EdgeInsets.all(3.w),
                 child: Row(
                   children: [
-                    Container(
-                      height: 10.w,
-                      width: 10.w,
-                      color: Colors.white,
-                      child: CachedNetworkImage(
-                        imageUrl: widget.accountItem.accountItemImage,
-                        placeholder: (context, url) =>
-                            Image.asset("assets/images/flutter-logo.png"),
-                        errorWidget: (context, url, error) =>
-                            Image.asset("assets/images/flutter-logo.png"),
-                      ),
+                    CachedNetworkImage(
+                      imageUrl: widget.accountItem.accountItemImage,
+                      errorWidget: (context, url, error) =>
+                          Image.asset("assets/images/flutter-logo.png"),
+                      width: 11.w,
+                      height: 11.w,
+                      fit: BoxFit.contain,
                     ),
                     SizedBox(width: 5.w),
                     Text(
                       widget.accountItem.accountItemName,
                       style: TextStyle(
-                        fontSize: 17.sp,
+                        fontSize: 18.sp,
                       ),
                     ),
                   ],
                 ),
               ),
-              const Divider(),
-              SizedBox(height: 3.h),
-              const Text("Username"),
-              SizedBox(height: 1.h),
+              const Divider(
+                color: color03,
+              ),
               TextField(
                 controller: controller.username,
+                style: TextStyle(
+                  fontSize: 17.5.sp,
+                ),
+                decoration: const InputDecoration(
+                  label: Text("Username"),
+                ),
               ),
               SizedBox(height: 3.h),
-              const Text("Password"),
-              SizedBox(height: 1.h),
               TextField(
                 controller: controller.password,
+                style: TextStyle(
+                  fontSize: 17.5.sp,
+                ),
+                decoration: const InputDecoration(
+                  label: Text("Password"),
+                ),
               ),
             ],
           ),
