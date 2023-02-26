@@ -1,3 +1,4 @@
+import 'package:vault/constants/app_images.dart';
 import 'package:vault/screens/splash_screen/splash_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -30,7 +31,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
         child: SizedBox(
           height: 35.w,
           width: 35.w,
-          child: Image.asset("assets/images/flutter-logo-with-label.png"),
+          child: Image.asset(imageLogo),
         ),
       ),
     );

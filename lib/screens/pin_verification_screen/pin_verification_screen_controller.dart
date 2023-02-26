@@ -1,4 +1,5 @@
 import 'package:vault/screens/accounts_screen/accounts_screen_view.dart';
+import 'package:vault/services/shared_preferences_service.dart';
 import 'package:flutter/material.dart';
 
 class PinVerificationScreenController {
@@ -17,7 +18,7 @@ class PinVerificationScreenController {
 
     setstate();
 
-    if (pin.length == 4) {
+    if (pin.length == 4 && pin == prefs.getString("userPin")) {
       Future.delayed(
         const Duration(milliseconds: 1500),
         () => Navigator.pushReplacement(
@@ -28,5 +29,11 @@ class PinVerificationScreenController {
         ),
       );
     }
+  }
+
+  void removePin() {
+    pin = pin.substring(0, pin.length - 1);
+
+    setstate();
   }
 }

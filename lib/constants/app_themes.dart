@@ -2,6 +2,12 @@ import 'package:vault/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData theme01 = ThemeData(
+  pageTransitionsTheme: const PageTransitionsTheme(
+    builders: {
+      TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+      TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+    },
+  ),
   colorScheme: const ColorScheme(
     brightness: Brightness.dark,
     primary: color02,

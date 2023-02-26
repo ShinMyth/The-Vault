@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AccountItem {
+  int id;
   String accountItemID;
   String accountItemImage;
   String accountItemName;
@@ -9,6 +10,7 @@ class AccountItem {
   String accountItemPassword;
 
   AccountItem({
+    required this.id,
     required this.accountItemID,
     required this.accountItemImage,
     required this.accountItemName,
@@ -24,6 +26,7 @@ class AccountItem {
     final data = snapshot.data();
 
     return AccountItem(
+      id: 0,
       accountItemID: id,
       accountItemImage: data?['accountItemImage'],
       accountItemName: data?['accountItemName'],
@@ -45,6 +48,7 @@ class AccountItem {
 
   factory AccountItem.fromMap(Map<String, dynamic> map) {
     return AccountItem(
+      id: map['id'] as int,
       accountItemID: map['accountItemID'] as String,
       accountItemImage: map['accountItemImage'] as String,
       accountItemName: map['accountItemName'] as String,

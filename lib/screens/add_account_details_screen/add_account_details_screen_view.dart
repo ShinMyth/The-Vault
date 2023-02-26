@@ -1,4 +1,6 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:vault/constants/app_colors.dart';
+import 'package:vault/constants/app_images.dart';
 import 'package:vault/models/account_item_model.dart';
 import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
 import 'package:vault/screens/add_account_details_screen/add_account_details_screen_controller.dart';
@@ -41,6 +43,12 @@ class _AddAccountDetailsScreenViewState
       onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: const Icon(
+              Icons.arrow_back_ios,
+            ),
+          ),
           title: Text(
             "ADD ACCOUNT DETAILS",
             style: TextStyle(
@@ -68,8 +76,13 @@ class _AddAccountDetailsScreenViewState
                   children: [
                     CachedNetworkImage(
                       imageUrl: widget.accountItem.accountItemImage,
+                      placeholder: (context, url) => SpinKitFadingCircle(
+                        color: color02,
+                        size: 22.sp,
+                        duration: const Duration(milliseconds: 1400),
+                      ),
                       errorWidget: (context, url, error) =>
-                          Image.asset("assets/images/flutter-logo.png"),
+                          Image.asset(imageLogo),
                       width: 11.w,
                       height: 11.w,
                       fit: BoxFit.contain,

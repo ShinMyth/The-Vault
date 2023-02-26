@@ -40,8 +40,8 @@ class AccountService {
         txn.update(
           "accounts",
           accountItem.toMap(),
-          where: "accountItemID = ?",
-          whereArgs: [accountItem.accountItemID],
+          where: "id = ?",
+          whereArgs: [accountItem.id],
         );
       });
     } catch (e) {
@@ -54,8 +54,8 @@ class AccountService {
       await db!.transaction((txn) async {
         txn.delete(
           "accounts",
-          where: "accountItemID = ?",
-          whereArgs: [accountItem.accountItemID],
+          where: "id = ?",
+          whereArgs: [accountItem.id],
         );
       });
     } catch (e) {

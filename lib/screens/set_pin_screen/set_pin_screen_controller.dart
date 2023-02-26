@@ -23,10 +23,18 @@ class SetPinScreenController {
         () => Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const SetPinConfirmationScreenView(),
+            builder: (context) => SetPinConfirmationScreenView(
+              pin: pin,
+            ),
           ),
         ),
       );
     }
+  }
+
+  void removePin() {
+    pin = pin.substring(0, pin.length - 1);
+
+    setstate();
   }
 }
