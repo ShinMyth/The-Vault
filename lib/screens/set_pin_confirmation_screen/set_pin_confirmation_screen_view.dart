@@ -43,7 +43,7 @@ class _SetPinConfirmationScreenViewState
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                "Confirm Pin",
+                "CONFIRM PIN",
                 style: TextStyle(
                   fontSize: 18.sp,
                 ),

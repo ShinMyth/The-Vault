@@ -1,4 +1,4 @@
-import 'package:vault/screens/set_pin_confirmation_screen/set_pin_confirmation_screen_view.dart';
+// import 'package:vault/screens/set_pin_confirmation_screen/set_pin_confirmation_screen_view.dart';
 import 'package:flutter/material.dart';
 
 class SetPinScreenController {
@@ -13,23 +13,23 @@ class SetPinScreenController {
   String pin = "";
 
   void enterPin(value) {
-    pin += value;
+    if (pin.length < 4) pin += value;
 
     setstate();
 
-    if (pin.length == 4) {
-      Future.delayed(
-        const Duration(milliseconds: 1500),
-        () => Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => SetPinConfirmationScreenView(
-              pin: pin,
-            ),
-          ),
-        ),
-      );
-    }
+    // if (pin.length == 4) {
+    //   Future.delayed(
+    //     const Duration(milliseconds: 1500),
+    //     () => Navigator.pushReplacement(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (context) => SetPinConfirmationScreenView(
+    //           pin: pin,
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
   }
 
   void removePin() {
