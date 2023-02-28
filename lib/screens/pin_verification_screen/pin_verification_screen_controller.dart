@@ -1,7 +1,7 @@
 import 'package:vault/screens/accounts_screen/accounts_screen_view.dart';
 import 'package:vault/services/shared_preferences_service.dart';
-import 'package:flutter/material.dart';
 import 'package:vault/shared/shared_snackbar.dart';
+import 'package:flutter/material.dart';
 
 class PinVerificationScreenController {
   final Function() setstate;
@@ -15,7 +15,9 @@ class PinVerificationScreenController {
   String pin = "";
 
   Future<void> enterPin(value) async {
-    pin += value;
+    if (pin.length < 4) {
+      pin += value;
+    }
 
     setstate();
 
@@ -32,16 +34,16 @@ class PinVerificationScreenController {
         );
       } else {
         Future.delayed(
-          const Duration(milliseconds: 750),
+          const Duration(milliseconds: 500),
           () {
             pin = "";
 
+            setstate();
+
             showSharedSnackbar(
               context: context,
-              content: const Text("Invalid Pin"),
+              content: const Text("Wrong pin."),
             );
-
-            setstate();
           },
         );
       }
@@ -49,7 +51,9 @@ class PinVerificationScreenController {
   }
 
   void removePin() {
-    pin = pin.substring(0, pin.length - 1);
+    if (pin.isNotEmpty) {
+      pin = pin.substring(0, pin.length - 1);
+    }
 
     setstate();
   }

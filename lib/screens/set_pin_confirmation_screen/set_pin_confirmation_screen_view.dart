@@ -1,9 +1,9 @@
 import 'package:vault/constants/app_colors.dart';
 import 'package:vault/screens/set_pin_confirmation_screen/set_pin_confirmation_screen_controller.dart';
-import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:vault/widgets/custom_elevated_button.dart';
 import 'package:vault/widgets/custom_pin_circle.dart';
+import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SetPinConfirmationScreenView extends StatefulWidget {
   const SetPinConfirmationScreenView({
@@ -53,22 +53,22 @@ class _SetPinConfirmationScreenViewState
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   CustomPinCircle(
-                    color: controller.pinConfirm.isNotEmpty
+                    color: controller.confirmPin.isNotEmpty
                         ? color02
                         : Colors.transparent,
                   ),
                   CustomPinCircle(
-                    color: controller.pinConfirm.length >= 2
+                    color: controller.confirmPin.length >= 2
                         ? color02
                         : Colors.transparent,
                   ),
                   CustomPinCircle(
-                    color: controller.pinConfirm.length >= 3
+                    color: controller.confirmPin.length >= 3
                         ? color02
                         : Colors.transparent,
                   ),
                   CustomPinCircle(
-                    color: controller.pinConfirm.length >= 4
+                    color: controller.confirmPin.length >= 4
                         ? color02
                         : Colors.transparent,
                   ),
@@ -79,15 +79,15 @@ class _SetPinConfirmationScreenViewState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomElevatedButton(
-                    onPressed: () => controller.enterPinConfirm("1"),
+                    onPressed: () => controller.enterConfirmPin("1"),
                     label: "1",
                   ),
                   CustomElevatedButton(
-                    onPressed: () => controller.enterPinConfirm("2"),
+                    onPressed: () => controller.enterConfirmPin("2"),
                     label: "2",
                   ),
                   CustomElevatedButton(
-                    onPressed: () => controller.enterPinConfirm("3"),
+                    onPressed: () => controller.enterConfirmPin("3"),
                     label: "3",
                   ),
                 ],
@@ -97,15 +97,15 @@ class _SetPinConfirmationScreenViewState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomElevatedButton(
-                    onPressed: () => controller.enterPinConfirm("4"),
+                    onPressed: () => controller.enterConfirmPin("4"),
                     label: "4",
                   ),
                   CustomElevatedButton(
-                    onPressed: () => controller.enterPinConfirm("5"),
+                    onPressed: () => controller.enterConfirmPin("5"),
                     label: "5",
                   ),
                   CustomElevatedButton(
-                    onPressed: () => controller.enterPinConfirm("6"),
+                    onPressed: () => controller.enterConfirmPin("6"),
                     label: "6",
                   ),
                 ],
@@ -115,15 +115,15 @@ class _SetPinConfirmationScreenViewState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomElevatedButton(
-                    onPressed: () => controller.enterPinConfirm("7"),
+                    onPressed: () => controller.enterConfirmPin("7"),
                     label: "7",
                   ),
                   CustomElevatedButton(
-                    onPressed: () => controller.enterPinConfirm("8"),
+                    onPressed: () => controller.enterConfirmPin("8"),
                     label: "8",
                   ),
                   CustomElevatedButton(
-                    onPressed: () => controller.enterPinConfirm("9"),
+                    onPressed: () => controller.enterConfirmPin("9"),
                     label: "9",
                   ),
                 ],
@@ -133,15 +133,15 @@ class _SetPinConfirmationScreenViewState
                 children: [
                   Align(
                     child: CustomElevatedButton(
-                      onPressed: () => controller.enterPinConfirm("0"),
+                      onPressed: () => controller.enterConfirmPin("0"),
                       label: "0",
                     ),
                   ),
-                  if (controller.pinConfirm.isNotEmpty)
+                  if (controller.confirmPin.isNotEmpty)
                     Positioned(
                       right: 0,
                       child: ElevatedButton(
-                        onPressed: () => controller.removePinConfirm(),
+                        onPressed: () => controller.removeConfirmPin(),
                         child: const Icon(
                           Icons.backspace_outlined,
                         ),

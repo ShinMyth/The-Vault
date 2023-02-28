@@ -1,7 +1,7 @@
 import 'package:vault/screens/accounts_screen/accounts_screen_view.dart';
-import 'package:flutter/material.dart';
 import 'package:vault/services/shared_preferences_service.dart';
 import 'package:vault/shared/shared_snackbar.dart';
+import 'package:flutter/material.dart';
 
 class SetPinConfirmationScreenController {
   final Function() setstate;
@@ -13,15 +13,17 @@ class SetPinConfirmationScreenController {
   });
 
   String pin = "";
-  String pinConfirm = "";
+  String confirmPin = "";
 
-  Future<void> enterPinConfirm(value) async {
-    if (pinConfirm.length < 4) pinConfirm += value;
+  Future<void> enterConfirmPin(value) async {
+    if (confirmPin.length < 4) {
+      confirmPin += value;
+    }
 
     setstate();
 
-    if (pinConfirm.length == 4) {
-      if (pinConfirm == pin) {
+    if (confirmPin.length == 4) {
+      if (confirmPin == pin) {
         await prefs.setBool("hasUser", true);
         await prefs.setString("userPin", pin);
 
@@ -36,24 +38,26 @@ class SetPinConfirmationScreenController {
         );
       } else {
         Future.delayed(
-          const Duration(milliseconds: 750),
+          const Duration(milliseconds: 500),
           () {
-            pinConfirm = "";
+            confirmPin = "";
+
+            setstate();
 
             showSharedSnackbar(
               context: context,
-              content: const Text("Pin does not match"),
+              content: const Text("Pin does not match."),
             );
-
-            setstate();
           },
         );
       }
     }
   }
 
-  void removePinConfirm() {
-    pinConfirm = pinConfirm.substring(0, pinConfirm.length - 1);
+  void removeConfirmPin() {
+    if (confirmPin.isNotEmpty) {
+      confirmPin = confirmPin.substring(0, confirmPin.length - 1);
+    }
 
     setstate();
   }

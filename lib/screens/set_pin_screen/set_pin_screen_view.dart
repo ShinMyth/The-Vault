@@ -1,10 +1,10 @@
 import 'package:vault/constants/app_colors.dart';
 import 'package:vault/screens/set_pin_confirmation_screen/set_pin_confirmation_screen_view.dart';
 import 'package:vault/screens/set_pin_screen/set_pin_screen_controller.dart';
-import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:vault/widgets/custom_elevated_button.dart';
 import 'package:vault/widgets/custom_pin_circle.dart';
+import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SetPinScreenView extends StatefulWidget {
   const SetPinScreenView({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class _SetPinScreenViewState extends State<SetPinScreenView> {
           if (controller.pin.length == 4)
             Positioned(
               top: 7.5.h,
-              right: 4.w,
+              right: 7.5.w,
               child: GestureDetector(
                 onTap: () => Navigator.pushReplacement(
                   context,
@@ -44,18 +44,13 @@ class _SetPinScreenViewState extends State<SetPinScreenView> {
                     ),
                   ),
                 ),
-                child: Row(
-                  children: [
-                    Text(
-                      "NEXT",
-                      style: TextStyle(fontSize: 17.sp),
-                    ),
-                    SizedBox(width: 0.5.w),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      size: 15.5.sp,
-                    ),
-                  ],
+                child: Text(
+                  "NEXT",
+                  style: TextStyle(
+                    color: color03,
+                    fontSize: 17.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ),
