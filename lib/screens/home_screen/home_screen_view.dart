@@ -1,14 +1,13 @@
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:vault/constants/app_colors.dart';
 import 'package:vault/constants/app_images.dart';
 import 'package:vault/screens/account_credentials_screen/account_credentials_screen_view.dart';
-// import 'package:vault/screens/account_details_screen/account_details_screen_view.dart';
 import 'package:vault/screens/accounts_screen/accounts_screen_view.dart';
 import 'package:vault/screens/home_screen/home_screen_controller.dart';
 import 'package:vault/services/account_service.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class HomeScreenView extends StatefulWidget {
   const HomeScreenView({Key? key}) : super(key: key);
@@ -63,12 +62,6 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                   return GestureDetector(
                     onTap: () => Navigator.push(
                       context,
-                      // MaterialPageRoute(
-                      //   builder: (context) => AccountDetailsScreenView(
-                      //     accountItem: accounts[index],
-                      //     accountsScreenController: controller,
-                      //   ),
-                      // ),
                       MaterialPageRoute(
                         builder: (context) => AccountCredentialsScreenView(
                           accountItem: accounts[index],

@@ -1,8 +1,8 @@
 import 'package:vault/models/account_model.dart';
-import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:vault/screens/accounts_screen/widgets/custom_account_item.dart';
 import 'package:vault/screens/home_screen/home_screen_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CustomAccount extends StatefulWidget {
   const CustomAccount({

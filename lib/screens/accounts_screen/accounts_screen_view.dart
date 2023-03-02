@@ -1,10 +1,10 @@
 import 'package:vault/constants/app_colors.dart';
+import 'package:vault/screens/accounts_screen/widgets/custom_account.dart';
 import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
+import 'package:vault/screens/home_screen/home_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:vault/screens/accounts_screen/widgets/custom_account.dart';
-import 'package:vault/screens/home_screen/home_screen_controller.dart';
 
 class AccountsScreenView extends StatefulWidget {
   const AccountsScreenView({
