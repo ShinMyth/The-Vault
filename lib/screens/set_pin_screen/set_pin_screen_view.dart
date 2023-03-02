@@ -33,7 +33,7 @@ class _SetPinScreenViewState extends State<SetPinScreenView> {
         children: [
           if (controller.pin.length == 4)
             Positioned(
-              top: 7.5.h,
+              top: 6.85.h,
               right: 7.5.w,
               child: GestureDetector(
                 onTap: () => Navigator.pushReplacement(

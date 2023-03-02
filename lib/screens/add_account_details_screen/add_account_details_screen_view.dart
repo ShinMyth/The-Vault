@@ -7,6 +7,7 @@ import 'package:vault/screens/add_account_details_screen/add_account_details_scr
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:vault/widgets/custom_text_field.dart';
 
 class AddAccountDetailsScreenView extends StatefulWidget {
   const AddAccountDetailsScreenView({
@@ -100,23 +101,38 @@ class _AddAccountDetailsScreenViewState
               const Divider(
                 color: color03,
               ),
-              TextField(
+              // TextField(
+              //   controller: controller.username,
+              //   style: TextStyle(
+              //     fontSize: 17.5.sp,
+              //   ),
+              //   decoration: const InputDecoration(
+              //     label: Text("Username"),
+              //   ),
+              // ),
+              CustomTextField(
                 controller: controller.username,
-                style: TextStyle(
-                  fontSize: 17.5.sp,
-                ),
-                decoration: const InputDecoration(
-                  label: Text("Username"),
-                ),
+                label: const Text("Username"),
               ),
               SizedBox(height: 3.h),
-              TextField(
+              // TextField(
+              //   controller: controller.password,
+              //   style: TextStyle(
+              //     fontSize: 17.5.sp,
+              //   ),
+              //   decoration: const InputDecoration(
+              //     label: Text("Password"),
+              //   ),
+              // ),
+              CustomTextField(
                 controller: controller.password,
-                style: TextStyle(
-                  fontSize: 17.5.sp,
-                ),
-                decoration: const InputDecoration(
-                  label: Text("Password"),
+                obscureText: controller.isPasswordObscureText,
+                label: const Text("Password"),
+                suffixIcon: GestureDetector(
+                  onTap: () => controller.changeIsPasswordObscureText(),
+                  child: controller.isPasswordObscureText
+                      ? const Icon(Icons.visibility_off)
+                      : const Icon(Icons.visibility),
                 ),
               ),
             ],

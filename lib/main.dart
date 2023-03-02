@@ -26,6 +26,8 @@ class MyApp extends StatelessWidget {
           home: const SplashScreenView(),
           title: 'The Vault',
           theme: theme01,
+          // debugShowMaterialGrid: true,
+          debugShowCheckedModeBanner: false,
         );
       },
     );

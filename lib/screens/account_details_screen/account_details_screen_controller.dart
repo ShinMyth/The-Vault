@@ -19,9 +19,17 @@ class AccountDetailsScreenController {
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
 
+  bool isPasswordObscureText = true;
+
   void setAccountData({required AccountItem accountItem}) {
     username.text = accountItem.accountItemUsername;
     password.text = accountItem.accountItemPassword;
+  }
+
+  void changeIsPasswordObscureText() {
+    isPasswordObscureText = !isPasswordObscureText;
+
+    setstate();
   }
 
   Future<void> updateAccountItem({required AccountItem accountItem}) async {

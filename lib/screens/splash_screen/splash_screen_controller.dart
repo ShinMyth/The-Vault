@@ -23,7 +23,7 @@ class SplashScreenController {
     await SharedPreferencesService().initializeSharedPreferences();
 
     Future.delayed(
-      const Duration(milliseconds: 2500),
+      const Duration(milliseconds: 2000),
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
