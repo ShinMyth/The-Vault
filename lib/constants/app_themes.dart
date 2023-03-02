@@ -1,4 +1,3 @@
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:vault/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -24,15 +23,4 @@ ThemeData theme01 = ThemeData(
   ),
   scaffoldBackgroundColor: color01,
   fontFamily: "Montserrat",
-  snackBarTheme: SnackBarThemeData(
-    backgroundColor: color02,
-    contentTextStyle: TextStyle(
-      color: color04,
-      fontSize: 17.sp,
-    ),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-    behavior: SnackBarBehavior.floating,
-  ),
 );

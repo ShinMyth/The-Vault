@@ -1,8 +1,8 @@
 import 'package:vault/models/account_model.dart';
-import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
-import 'package:vault/screens/add_account_screen/widgets/custom_account_item.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:vault/screens/accounts_screen/widgets/custom_account_item.dart';
+import 'package:vault/screens/home_screen/home_screen_controller.dart';
 
 class CustomAccount extends StatefulWidget {
   const CustomAccount({
@@ -12,7 +12,7 @@ class CustomAccount extends StatefulWidget {
   }) : super(key: key);
 
   final Account account;
-  final AccountsScreenController accountsScreenController;
+  final HomeScreenController accountsScreenController;
 
   @override
   State<CustomAccount> createState() => _CustomAccountState();

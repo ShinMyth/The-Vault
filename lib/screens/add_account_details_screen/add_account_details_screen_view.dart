@@ -2,11 +2,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:vault/constants/app_colors.dart';
 import 'package:vault/constants/app_images.dart';
 import 'package:vault/models/account_item_model.dart';
-import 'package:vault/screens/accounts_screen/accounts_screen_controller.dart';
 import 'package:vault/screens/add_account_details_screen/add_account_details_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:vault/screens/home_screen/home_screen_controller.dart';
 import 'package:vault/widgets/custom_text_field.dart';
 
 class AddAccountDetailsScreenView extends StatefulWidget {
@@ -17,7 +17,7 @@ class AddAccountDetailsScreenView extends StatefulWidget {
   }) : super(key: key);
 
   final AccountItem accountItem;
-  final AccountsScreenController accountsScreenController;
+  final HomeScreenController accountsScreenController;
 
   @override
   State<AddAccountDetailsScreenView> createState() =>

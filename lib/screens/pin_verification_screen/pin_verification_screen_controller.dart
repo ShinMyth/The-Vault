@@ -1,4 +1,6 @@
-import 'package:vault/screens/accounts_screen/accounts_screen_view.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:vault/constants/app_colors.dart';
+import 'package:vault/screens/home_screen/home_screen_view.dart';
 import 'package:vault/services/shared_preferences_service.dart';
 import 'package:vault/shared/shared_loading.dart';
 import 'package:vault/shared/shared_snackbar.dart';
@@ -34,7 +36,7 @@ class PinVerificationScreenController {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => const AccountsScreenView(),
+                builder: (context) => const HomeScreenView(),
               ),
             );
           },
@@ -51,7 +53,13 @@ class PinVerificationScreenController {
 
             showSharedSnackbar(
               context: context,
-              content: const Text("Wrong pin."),
+              content: Text(
+                "Wrong pin.",
+                style: TextStyle(
+                  color: color04,
+                  fontSize: 17.sp,
+                ),
+              ),
             );
           },
         );

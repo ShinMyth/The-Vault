@@ -1,38 +1,80 @@
+import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:vault/models/account_item_model.dart';
 import 'package:vault/screens/home_screen/home_screen_controller.dart';
 import 'package:vault/services/account_service.dart';
 import 'package:vault/shared/shared_dialog.dart';
-import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
-class AccountDetailsScreenController {
+class AccountCredentialsScreenController {
   final Function() setstate;
   final BuildContext context;
-  final HomeScreenController accountsScreenController;
 
-  AccountDetailsScreenController({
+  AccountCredentialsScreenController({
     required this.setstate,
     required this.context,
-    required this.accountsScreenController,
   });
+
+  late AccountItem accountItem;
+  late HomeScreenController homeScreenController;
 
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
-
   bool isPasswordObscureText = true;
-
-  void setAccountData({required AccountItem accountItem}) {
-    username.text = accountItem.accountItemUsername;
-    password.text = accountItem.accountItemPassword;
-  }
 
   void changeIsPasswordObscureText() {
     isPasswordObscureText = !isPasswordObscureText;
-
     setstate();
   }
 
-  Future<void> updateAccountItem({required AccountItem accountItem}) async {
+  Future<void> insertAccountItem() async {
+    if (username.text.isEmpty || password.text.isEmpty) return;
+
+    bool result = await showSharedDialog(
+          context: context,
+          barrierDismissible: true,
+          title: Text(
+            "Add Account",
+            style: TextStyle(
+              fontSize: 17.5.sp,
+            ),
+          ),
+          content: Text(
+            "Do you want to add this account?",
+            style: TextStyle(
+              fontSize: 16.sp,
+            ),
+          ),
+          actionFunction1: () => Navigator.pop(context, false),
+          actionLabel1: Text(
+            "Cancel",
+            style: TextStyle(
+              fontSize: 16.5.sp,
+            ),
+          ),
+          actionFunction2: () => Navigator.pop(context, true),
+          actionLabel2: Text(
+            "Add",
+            style: TextStyle(
+              fontSize: 16.5.sp,
+            ),
+          ),
+        ) ??
+        false;
+
+    if (!result) return;
+
+    accountItem.accountItemUsername = username.text;
+    accountItem.accountItemPassword = password.text;
+
+    await AccountService().insertAccountItem(accountItem: accountItem);
+
+    await homeScreenController.queryAccountItem();
+
+    Navigator.pop(context);
+    Navigator.pop(context);
+  }
+
+  Future<void> updateAccountItem() async {
     if (username.text.isEmpty || password.text.isEmpty) return;
 
     bool result = await showSharedDialog(
@@ -74,12 +116,12 @@ class AccountDetailsScreenController {
 
     await AccountService().updateAccountItem(accountItem: accountItem);
 
-    await accountsScreenController.queryAccountItem();
+    await homeScreenController.queryAccountItem();
 
     Navigator.pop(context);
   }
 
-  Future<void> deleteAccountItem({required AccountItem accountItem}) async {
+  Future<void> deleteAccountItem() async {
     bool result = await showSharedDialog(
           context: context,
           barrierDismissible: true,
@@ -116,7 +158,7 @@ class AccountDetailsScreenController {
 
     await AccountService().deleteAccountItem(accountItem: accountItem);
 
-    await accountsScreenController.queryAccountItem();
+    await homeScreenController.queryAccountItem();
 
     Navigator.pop(context);
   }

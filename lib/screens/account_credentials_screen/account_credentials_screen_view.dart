@@ -1,41 +1,51 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
+
 import 'package:vault/constants/app_colors.dart';
 import 'package:vault/constants/app_images.dart';
 import 'package:vault/models/account_item_model.dart';
-import 'package:vault/screens/account_details_screen/account_details_screen_controller.dart';
-import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:vault/screens/account_credentials_screen/account_credentials_screen_controller.dart';
 import 'package:vault/screens/home_screen/home_screen_controller.dart';
 import 'package:vault/widgets/custom_text_field.dart';
 
-class AccountDetailsScreenView extends StatefulWidget {
-  const AccountDetailsScreenView({
+class AccountCredentialsScreenView extends StatefulWidget {
+  const AccountCredentialsScreenView({
     Key? key,
     required this.accountItem,
-    required this.accountsScreenController,
+    required this.homeScreenController,
+    required this.isAddAccount,
+    required this.isUpdateDeleteAccount,
   }) : super(key: key);
 
   final AccountItem accountItem;
-  final HomeScreenController accountsScreenController;
+  final HomeScreenController homeScreenController;
+  final bool isAddAccount;
+  final bool isUpdateDeleteAccount;
 
   @override
-  State<AccountDetailsScreenView> createState() =>
-      _AccountDetailsScreenViewState();
+  State<AccountCredentialsScreenView> createState() =>
+      _AccountCredentialsScreenViewState();
 }
 
-class _AccountDetailsScreenViewState extends State<AccountDetailsScreenView> {
-  late AccountDetailsScreenController controller;
+class _AccountCredentialsScreenViewState
+    extends State<AccountCredentialsScreenView> {
+  late AccountCredentialsScreenController controller;
 
   @override
   void initState() {
-    controller = AccountDetailsScreenController(
+    controller = AccountCredentialsScreenController(
       setstate: () => setState(() {}),
       context: context,
-      accountsScreenController: widget.accountsScreenController,
     );
 
-    controller.setAccountData(accountItem: widget.accountItem);
+    controller.accountItem = widget.accountItem;
+    controller.homeScreenController = widget.homeScreenController;
+
+    controller.username.text = controller.accountItem.accountItemUsername;
+    controller.password.text = controller.accountItem.accountItemPassword;
     super.initState();
   }
 
@@ -52,7 +62,7 @@ class _AccountDetailsScreenViewState extends State<AccountDetailsScreenView> {
             ),
           ),
           title: Text(
-            "ACCOUNT DETAILS",
+            "ACC. CREDENTIALS",
             style: TextStyle(
               fontSize: 18.5.sp,
               fontWeight: FontWeight.w500,
@@ -60,16 +70,21 @@ class _AccountDetailsScreenViewState extends State<AccountDetailsScreenView> {
           ),
           centerTitle: true,
           actions: [
-            IconButton(
-              onPressed: () =>
-                  controller.updateAccountItem(accountItem: widget.accountItem),
-              icon: const Icon(Icons.edit),
-            ),
-            IconButton(
-              onPressed: () =>
-                  controller.deleteAccountItem(accountItem: widget.accountItem),
-              icon: const Icon(Icons.delete),
-            ),
+            if (widget.isAddAccount)
+              IconButton(
+                onPressed: () => controller.insertAccountItem(),
+                icon: const Icon(Icons.add),
+              ),
+            if (widget.isUpdateDeleteAccount) ...[
+              IconButton(
+                onPressed: () => controller.updateAccountItem(),
+                icon: const Icon(Icons.edit),
+              ),
+              IconButton(
+                onPressed: () => controller.deleteAccountItem(),
+                icon: const Icon(Icons.delete),
+              ),
+            ],
           ],
         ),
         body: Padding(
@@ -107,30 +122,11 @@ class _AccountDetailsScreenViewState extends State<AccountDetailsScreenView> {
               const Divider(
                 color: color03,
               ),
-              // TextField(
-              //   controller: controller.username,
-              //   style: TextStyle(
-              //     fontSize: 17.5.sp,
-              //   ),
-              //   decoration: const InputDecoration(
-              //     label: Text("Username"),
-              //   ),
-              // ),
-
               CustomTextField(
                 controller: controller.username,
                 label: const Text("Username"),
               ),
               SizedBox(height: 3.h),
-              // TextField(
-              //   controller: controller.password,
-              //   style: TextStyle(
-              //     fontSize: 17.5.sp,
-              //   ),
-              //   decoration: const InputDecoration(
-              //     label: Text("Password"),
-              //   ),
-              // ),
               CustomTextField(
                 controller: controller.password,
                 obscureText: controller.isPasswordObscureText,

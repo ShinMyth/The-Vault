@@ -35,6 +35,13 @@ class _PinVerificationScreenViewState extends State<PinVerificationScreenView> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              Text(
+                "ENTER PIN",
+                style: TextStyle(
+                  fontSize: 18.sp,
+                ),
+              ),
+              SizedBox(height: 6.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
