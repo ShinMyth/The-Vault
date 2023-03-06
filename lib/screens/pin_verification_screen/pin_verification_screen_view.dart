@@ -61,7 +61,7 @@ class _PinVerificationScreenViewState extends State<PinVerificationScreenView> {
                         : Colors.transparent,
                   ),
                   CustomPinCircle(
-                    color: controller.pin.length >= 4
+                    color: controller.pin.length == 4
                         ? color02
                         : Colors.transparent,
                   ),

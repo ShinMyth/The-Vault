@@ -55,9 +55,7 @@ class _AccountCredentialsScreenViewState
         appBar: AppBar(
           leading: IconButton(
             onPressed: () => Navigator.pop(context),
-            icon: const Icon(
-              Icons.arrow_back_ios,
-            ),
+            icon: const Icon(Icons.arrow_back_ios),
           ),
           title: Text(
             "ACC. CREDENTIALS",
@@ -68,12 +66,12 @@ class _AccountCredentialsScreenViewState
           ),
           centerTitle: true,
           actions: [
-            if (widget.isAddAccount)
+            if (widget.isAddAccount && !widget.isUpdateDeleteAccount)
               IconButton(
                 onPressed: () => controller.insertAccountItem(),
                 icon: const Icon(Icons.add),
               ),
-            if (widget.isUpdateDeleteAccount) ...[
+            if (widget.isUpdateDeleteAccount && !widget.isAddAccount) ...[
               IconButton(
                 onPressed: () => controller.updateAccountItem(),
                 icon: const Icon(Icons.edit),

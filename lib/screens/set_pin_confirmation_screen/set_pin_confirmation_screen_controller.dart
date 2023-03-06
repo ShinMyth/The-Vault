@@ -1,10 +1,10 @@
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:vault/constants/app_colors.dart';
 import 'package:vault/screens/home_screen/home_screen_view.dart';
 import 'package:vault/services/shared_preferences_service.dart';
 import 'package:vault/shared/shared_loading.dart';
 import 'package:vault/shared/shared_snackbar.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SetPinConfirmationScreenController {
   final Function() setstate;
@@ -21,9 +21,9 @@ class SetPinConfirmationScreenController {
   Future<void> enterConfirmPin(value) async {
     if (confirmPin.length < 4) {
       confirmPin += value;
-    }
 
-    setstate();
+      setstate();
+    }
 
     if (confirmPin.length == 4) {
       showSharedLoading(context: context);
@@ -58,7 +58,7 @@ class SetPinConfirmationScreenController {
             showSharedSnackbar(
               context: context,
               content: Text(
-                "Pin does not match.",
+                "Pin does not match",
                 style: TextStyle(
                   color: color04,
                   fontSize: 17.sp,
@@ -74,8 +74,8 @@ class SetPinConfirmationScreenController {
   void removeConfirmPin() {
     if (confirmPin.isNotEmpty) {
       confirmPin = confirmPin.substring(0, confirmPin.length - 1);
-    }
 
-    setstate();
+      setstate();
+    }
   }
 }

@@ -23,9 +23,7 @@ showSharedDialog({
           FocusManager.instance.primaryFocus?.unfocus();
         },
         child: Platform.isAndroid
-            ?
-            // Dialog for android platform
-            AlertDialog(
+            ? AlertDialog(
                 title: title,
                 content: content,
                 actions: [
@@ -49,9 +47,7 @@ showSharedDialog({
                   ],
                 ],
               )
-            :
-            // Dialog for ios platform
-            CupertinoAlertDialog(
+            : CupertinoAlertDialog(
                 title: title,
                 content: content,
                 actions: [

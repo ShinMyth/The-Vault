@@ -5,7 +5,6 @@ class AccountItem {
   String accountItemID;
   String accountItemImage;
   String accountItemName;
-  int accountItemOrder;
   String accountItemUsername;
   String accountItemPassword;
 
@@ -14,7 +13,6 @@ class AccountItem {
     required this.accountItemID,
     required this.accountItemImage,
     required this.accountItemName,
-    required this.accountItemOrder,
     required this.accountItemUsername,
     required this.accountItemPassword,
   });
@@ -30,7 +28,6 @@ class AccountItem {
       accountItemID: id,
       accountItemImage: data?['accountItemImage'],
       accountItemName: data?['accountItemName'],
-      accountItemOrder: data?['accountItemOrder'],
       accountItemUsername: "",
       accountItemPassword: "",
     );
@@ -52,7 +49,6 @@ class AccountItem {
       accountItemID: map['accountItemID'] as String,
       accountItemImage: map['accountItemImage'] as String,
       accountItemName: map['accountItemName'] as String,
-      accountItemOrder: 0,
       accountItemUsername: map['accountItemUsername'] as String,
       accountItemPassword: map['accountItemPassword'] as String,
     );

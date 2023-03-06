@@ -86,7 +86,7 @@ class _SetPinScreenViewState extends State<SetPinScreenView> {
                             : Colors.transparent,
                       ),
                       CustomPinCircle(
-                        color: controller.pin.length >= 4
+                        color: controller.pin.length == 4
                             ? color02
                             : Colors.transparent,
                       ),

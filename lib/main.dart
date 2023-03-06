@@ -7,8 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   await Firebase.initializeApp();
 
@@ -23,8 +22,8 @@ class MyApp extends StatelessWidget {
     return ResponsiveSizer(
       builder: (context, orientation, screenType) {
         return MaterialApp(
+          title: "The Vault",
           home: const SplashScreenView(),
-          title: 'The Vault',
           theme: theme01,
           // debugShowMaterialGrid: true,
           debugShowCheckedModeBanner: false,

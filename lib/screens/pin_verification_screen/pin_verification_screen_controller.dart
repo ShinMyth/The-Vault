@@ -1,10 +1,10 @@
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:vault/constants/app_colors.dart';
 import 'package:vault/screens/home_screen/home_screen_view.dart';
 import 'package:vault/services/shared_preferences_service.dart';
 import 'package:vault/shared/shared_loading.dart';
 import 'package:vault/shared/shared_snackbar.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PinVerificationScreenController {
   final Function() setstate;
@@ -20,9 +20,9 @@ class PinVerificationScreenController {
   Future<void> enterPin(value) async {
     if (pin.length < 4) {
       pin += value;
-    }
 
-    setstate();
+      setstate();
+    }
 
     if (pin.length == 4) {
       showSharedLoading(context: context);
@@ -54,7 +54,7 @@ class PinVerificationScreenController {
             showSharedSnackbar(
               context: context,
               content: Text(
-                "Wrong pin.",
+                "Wrong pin",
                 style: TextStyle(
                   color: color04,
                   fontSize: 17.sp,
@@ -70,8 +70,8 @@ class PinVerificationScreenController {
   void removePin() {
     if (pin.isNotEmpty) {
       pin = pin.substring(0, pin.length - 1);
-    }
 
-    setstate();
+      setstate();
+    }
   }
 }

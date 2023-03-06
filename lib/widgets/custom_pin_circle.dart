@@ -1,6 +1,6 @@
+import 'package:vault/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:vault/constants/app_colors.dart';
 
 class CustomPinCircle extends StatefulWidget {
   const CustomPinCircle({

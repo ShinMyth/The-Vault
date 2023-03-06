@@ -4,13 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Account {
   String accountID;
   String accountName;
-  int accountOrder;
   List<AccountItem> accountItems;
 
   Account({
     required this.accountID,
     required this.accountName,
-    required this.accountOrder,
     required this.accountItems,
   });
 
@@ -23,7 +21,6 @@ class Account {
     return Account(
       accountID: id,
       accountName: data?['accountName'],
-      accountOrder: data?['accountOrder'],
       accountItems: [],
     );
   }

@@ -9,10 +9,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class AccountsScreenView extends StatefulWidget {
   const AccountsScreenView({
     Key? key,
-    required this.accountsScreenController,
+    required this.homeScreenController,
   }) : super(key: key);
 
-  final HomeScreenController accountsScreenController;
+  final HomeScreenController homeScreenController;
 
   @override
   State<AccountsScreenView> createState() => _AccountsScreenViewState();
@@ -38,9 +38,7 @@ class _AccountsScreenViewState extends State<AccountsScreenView> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(
-            Icons.arrow_back_ios,
-          ),
+          icon: const Icon(Icons.arrow_back_ios),
         ),
         title: Text(
           "ACCOUNTS",
@@ -62,11 +60,13 @@ class _AccountsScreenViewState extends State<AccountsScreenView> {
                 ),
               )
             : ListView.builder(
+                physics: const ClampingScrollPhysics(),
+                padding: EdgeInsets.zero,
                 itemCount: controller.accounts.length,
                 itemBuilder: (context, index) {
                   return CustomAccount(
                     account: controller.accounts[index],
-                    accountsScreenController: widget.accountsScreenController,
+                    homeScreenController: widget.homeScreenController,
                   );
                 },
               ),

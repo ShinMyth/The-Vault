@@ -68,7 +68,7 @@ class _SetPinConfirmationScreenViewState
                         : Colors.transparent,
                   ),
                   CustomPinCircle(
-                    color: controller.confirmPin.length >= 4
+                    color: controller.confirmPin.length == 4
                         ? color02
                         : Colors.transparent,
                   ),

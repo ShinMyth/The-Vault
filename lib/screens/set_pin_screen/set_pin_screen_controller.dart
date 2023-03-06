@@ -14,16 +14,16 @@ class SetPinScreenController {
   void enterPin(value) {
     if (pin.length < 4) {
       pin += value;
-    }
 
-    setstate();
+      setstate();
+    }
   }
 
   void removePin() {
     if (pin.isNotEmpty) {
       pin = pin.substring(0, pin.length - 1);
-    }
 
-    setstate();
+      setstate();
+    }
   }
 }

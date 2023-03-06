@@ -8,21 +8,21 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class CustomAccountItem extends StatefulWidget {
-  const CustomAccountItem({
+class CustomAccountRecord extends StatefulWidget {
+  const CustomAccountRecord({
     Key? key,
     required this.accountItem,
-    required this.homeScreenController,
+    required this.controller,
   }) : super(key: key);
 
   final AccountItem accountItem;
-  final HomeScreenController homeScreenController;
+  final HomeScreenController controller;
 
   @override
-  State<CustomAccountItem> createState() => _CustomAccountItemState();
+  State<CustomAccountRecord> createState() => _CustomAccountRecordState();
 }
 
-class _CustomAccountItemState extends State<CustomAccountItem> {
+class _CustomAccountRecordState extends State<CustomAccountRecord> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -31,20 +31,22 @@ class _CustomAccountItemState extends State<CustomAccountItem> {
         MaterialPageRoute(
           builder: (context) => AccountCredentialsScreenView(
             accountItem: widget.accountItem,
-            homeScreenController: widget.homeScreenController,
-            isAddAccount: true,
-            isUpdateDeleteAccount: false,
+            homeScreenController: widget.controller,
+            isAddAccount: false,
+            isUpdateDeleteAccount: true,
           ),
         ),
       ),
       child: Container(
+        padding: EdgeInsets.symmetric(vertical: 2.w, horizontal: 1.w),
+        margin: EdgeInsets.only(bottom: 3.w),
         decoration: BoxDecoration(
           color: color06,
           border: Border.all(color: color04),
           borderRadius: BorderRadius.circular(7.5),
         ),
-        child: Center(
-          child: CachedNetworkImage(
+        child: ListTile(
+          leading: CachedNetworkImage(
             imageUrl: widget.accountItem.accountItemImage,
             placeholder: (context, url) => SpinKitFadingCircle(
               color: color02,
@@ -55,6 +57,12 @@ class _CustomAccountItemState extends State<CustomAccountItem> {
             width: 11.w,
             height: 11.w,
             fit: BoxFit.contain,
+          ),
+          title: Text(
+            widget.accountItem.accountItemName,
+            style: TextStyle(
+              fontSize: 18.sp,
+            ),
           ),
         ),
       ),

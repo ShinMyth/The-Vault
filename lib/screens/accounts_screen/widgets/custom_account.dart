@@ -8,11 +8,11 @@ class CustomAccount extends StatefulWidget {
   const CustomAccount({
     Key? key,
     required this.account,
-    required this.accountsScreenController,
+    required this.homeScreenController,
   }) : super(key: key);
 
   final Account account;
-  final HomeScreenController accountsScreenController;
+  final HomeScreenController homeScreenController;
 
   @override
   State<CustomAccount> createState() => _CustomAccountState();
@@ -35,6 +35,7 @@ class _CustomAccountState extends State<CustomAccount> {
               GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
+                padding: EdgeInsets.zero,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
                   crossAxisSpacing: 3.w,
@@ -44,7 +45,7 @@ class _CustomAccountState extends State<CustomAccount> {
                 itemBuilder: (context, index) {
                   return CustomAccountItem(
                     accountItem: widget.account.accountItems[index],
-                    accountsScreenController: widget.accountsScreenController,
+                    homeScreenController: widget.homeScreenController,
                   );
                 },
               ),
