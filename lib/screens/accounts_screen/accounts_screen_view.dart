@@ -59,16 +59,26 @@ class _AccountsScreenViewState extends State<AccountsScreenView> {
                   duration: const Duration(milliseconds: 1400),
                 ),
               )
-            : ListView.builder(
-                physics: const ClampingScrollPhysics(),
-                padding: EdgeInsets.zero,
-                itemCount: controller.accounts.length,
-                itemBuilder: (context, index) {
-                  return CustomAccount(
-                    account: controller.accounts[index],
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ListView.builder(
+                    physics: const ClampingScrollPhysics(),
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    itemCount: controller.accounts.length,
+                    itemBuilder: (context, index) {
+                      return CustomAccount(
+                        account: controller.accounts[index],
+                        homeScreenController: widget.homeScreenController,
+                      );
+                    },
+                  ),
+                  CustomAccount(
+                    account: controller.otherAccounts,
                     homeScreenController: widget.homeScreenController,
-                  );
-                },
+                  ),
+                ],
               ),
       ),
     );

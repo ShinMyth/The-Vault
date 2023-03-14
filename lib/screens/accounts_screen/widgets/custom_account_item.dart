@@ -32,6 +32,8 @@ class _CustomAccountItemState extends State<CustomAccountItem> {
           builder: (context) => AccountCredentialsScreenView(
             accountItem: widget.accountItem,
             homeScreenController: widget.homeScreenController,
+            isOtherAccounts:
+                widget.accountItem.accountItemID == "AI00" ? true : false,
             isAddAccount: true,
             isUpdateDeleteAccount: false,
           ),
@@ -44,18 +46,20 @@ class _CustomAccountItemState extends State<CustomAccountItem> {
           borderRadius: BorderRadius.circular(7.5),
         ),
         child: Center(
-          child: CachedNetworkImage(
-            imageUrl: widget.accountItem.accountItemImage,
-            placeholder: (context, url) => SpinKitFadingCircle(
-              color: color02,
-              size: 22.sp,
-              duration: const Duration(milliseconds: 1400),
-            ),
-            errorWidget: (context, url, error) => Image.asset(imageLogo),
-            width: 11.w,
-            height: 11.w,
-            fit: BoxFit.contain,
-          ),
+          child: widget.accountItem.accountItemID == "AI00"
+              ? const Icon(Icons.add)
+              : CachedNetworkImage(
+                  imageUrl: widget.accountItem.accountItemImage,
+                  placeholder: (context, url) => SpinKitFadingCircle(
+                    color: color02,
+                    size: 22.sp,
+                    duration: const Duration(milliseconds: 1400),
+                  ),
+                  errorWidget: (context, url, error) => Image.asset(imageLogo),
+                  width: 11.w,
+                  height: 11.w,
+                  fit: BoxFit.contain,
+                ),
         ),
       ),
     );

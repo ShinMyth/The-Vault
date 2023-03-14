@@ -32,6 +32,8 @@ class _CustomAccountRecordState extends State<CustomAccountRecord> {
           builder: (context) => AccountCredentialsScreenView(
             accountItem: widget.accountItem,
             homeScreenController: widget.controller,
+            isOtherAccounts:
+                widget.accountItem.accountItemID == "AI00" ? true : false,
             isAddAccount: false,
             isUpdateDeleteAccount: true,
           ),
@@ -46,18 +48,25 @@ class _CustomAccountRecordState extends State<CustomAccountRecord> {
           borderRadius: BorderRadius.circular(7.5),
         ),
         child: ListTile(
-          leading: CachedNetworkImage(
-            imageUrl: widget.accountItem.accountItemImage,
-            placeholder: (context, url) => SpinKitFadingCircle(
-              color: color02,
-              size: 22.sp,
-              duration: const Duration(milliseconds: 1400),
-            ),
-            errorWidget: (context, url, error) => Image.asset(imageLogo),
-            width: 11.w,
-            height: 11.w,
-            fit: BoxFit.contain,
-          ),
+          leading: widget.accountItem.accountItemID == "AI00"
+              ? Image.asset(
+                  imageLogo,
+                  width: 11.w,
+                  height: 11.w,
+                  fit: BoxFit.contain,
+                )
+              : CachedNetworkImage(
+                  imageUrl: widget.accountItem.accountItemImage,
+                  placeholder: (context, url) => SpinKitFadingCircle(
+                    color: color02,
+                    size: 22.sp,
+                    duration: const Duration(milliseconds: 1400),
+                  ),
+                  errorWidget: (context, url, error) => Image.asset(imageLogo),
+                  width: 11.w,
+                  height: 11.w,
+                  fit: BoxFit.contain,
+                ),
           title: Text(
             widget.accountItem.accountItemName,
             style: TextStyle(

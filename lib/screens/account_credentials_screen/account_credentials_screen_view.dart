@@ -1,8 +1,8 @@
 import 'package:vault/constants/app_colors.dart';
 import 'package:vault/constants/app_images.dart';
 import 'package:vault/models/account_item_model.dart';
-import 'package:vault/screens/account_credentials_screen/widgets/custom_text_field.dart';
 import 'package:vault/screens/account_credentials_screen/account_credentials_screen_controller.dart';
+import 'package:vault/screens/account_credentials_screen/widgets/custom_text_field.dart';
 import 'package:vault/screens/home_screen/home_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -14,12 +14,14 @@ class AccountCredentialsScreenView extends StatefulWidget {
     Key? key,
     required this.accountItem,
     required this.homeScreenController,
+    required this.isOtherAccounts,
     required this.isAddAccount,
     required this.isUpdateDeleteAccount,
   }) : super(key: key);
 
   final AccountItem accountItem;
   final HomeScreenController homeScreenController;
+  final bool isOtherAccounts;
   final bool isAddAccount;
   final bool isUpdateDeleteAccount;
 
@@ -42,6 +44,7 @@ class _AccountCredentialsScreenViewState
     controller.accountItem = widget.accountItem;
     controller.homeScreenController = widget.homeScreenController;
 
+    controller.accountName.text = controller.accountItem.accountItemName;
     controller.username.text = controller.accountItem.accountItemUsername;
     controller.password.text = controller.accountItem.accountItemPassword;
     super.initState();
@@ -92,29 +95,47 @@ class _AccountCredentialsScreenViewState
                 padding: EdgeInsets.all(3.w),
                 child: Row(
                   children: [
-                    CachedNetworkImage(
-                      imageUrl: widget.accountItem.accountItemImage,
-                      placeholder: (context, url) => SpinKitFadingCircle(
-                        color: color02,
-                        size: 22.sp,
-                        duration: const Duration(milliseconds: 1400),
+                    if (widget.accountItem.accountItemID == "AI00") ...[
+                      Image.asset(
+                        imageLogo,
+                        width: 11.w,
+                        height: 11.w,
+                        fit: BoxFit.contain,
                       ),
-                      errorWidget: (context, url, error) =>
-                          Image.asset(imageLogo),
-                      width: 11.w,
-                      height: 11.w,
-                      fit: BoxFit.contain,
-                    ),
-                    SizedBox(width: 5.w),
-                    Text(
-                      widget.accountItem.accountItemName,
-                      style: TextStyle(
-                        fontSize: 18.sp,
+                      SizedBox(width: 5.w),
+                      SizedBox(
+                        width: 68.w,
+                        child: CustomTextField(
+                          controller: controller.accountName,
+                          label: const Text("Account Name"),
+                        ),
                       ),
-                    ),
+                    ] else ...[
+                      CachedNetworkImage(
+                        imageUrl: widget.accountItem.accountItemImage,
+                        placeholder: (context, url) => SpinKitFadingCircle(
+                          color: color02,
+                          size: 22.sp,
+                          duration: const Duration(milliseconds: 1400),
+                        ),
+                        errorWidget: (context, url, error) =>
+                            Image.asset(imageLogo),
+                        width: 11.w,
+                        height: 11.w,
+                        fit: BoxFit.contain,
+                      ),
+                      SizedBox(width: 5.w),
+                      Text(
+                        widget.accountItem.accountItemName,
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ),
+              SizedBox(height: 1.h),
               const Divider(
                 color: color03,
               ),

@@ -17,6 +17,7 @@ class AccountCredentialsScreenController {
   late AccountItem accountItem;
   late HomeScreenController homeScreenController;
 
+  TextEditingController accountName = TextEditingController();
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
   bool isPasswordObscureText = true;
@@ -27,7 +28,13 @@ class AccountCredentialsScreenController {
   }
 
   Future<void> insertAccountItem() async {
-    if (username.text.isEmpty || password.text.isEmpty) return;
+    if (accountItem.accountItemID == "AI00") {
+      if (accountName.text.isEmpty ||
+          username.text.isEmpty ||
+          password.text.isEmpty) return;
+    } else {
+      if (username.text.isEmpty || password.text.isEmpty) return;
+    }
 
     bool result = await showSharedDialog(
           context: context,
@@ -63,6 +70,10 @@ class AccountCredentialsScreenController {
 
     if (!result) return;
 
+    if (accountItem.accountItemID == "AI00") {
+      accountItem.accountItemName = accountName.text;
+    }
+
     accountItem.accountItemUsername = username.text;
     accountItem.accountItemPassword = password.text;
 
@@ -75,7 +86,13 @@ class AccountCredentialsScreenController {
   }
 
   Future<void> updateAccountItem() async {
-    if (username.text.isEmpty || password.text.isEmpty) return;
+    if (accountItem.accountItemID == "AI00") {
+      if (accountName.text.isEmpty ||
+          username.text.isEmpty ||
+          password.text.isEmpty) return;
+    } else {
+      if (username.text.isEmpty || password.text.isEmpty) return;
+    }
 
     bool result = await showSharedDialog(
           context: context,
@@ -110,6 +127,10 @@ class AccountCredentialsScreenController {
         false;
 
     if (!result) return;
+
+    if (accountItem.accountItemID == "AI00") {
+      accountItem.accountItemName = accountName.text;
+    }
 
     accountItem.accountItemUsername = username.text;
     accountItem.accountItemPassword = password.text;

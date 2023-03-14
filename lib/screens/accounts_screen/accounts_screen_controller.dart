@@ -18,6 +18,21 @@ class AccountsScreenController {
 
   List<Account> accounts = [];
 
+  Account otherAccounts = Account(
+    accountID: "A00",
+    accountName: "Others",
+    accountItems: [
+      AccountItem(
+        id: 0,
+        accountItemID: "AI00",
+        accountItemImage: "",
+        accountItemName: "",
+        accountItemUsername: "",
+        accountItemPassword: "",
+      ),
+    ],
+  );
+
   Future<void> getAccountsData() async {
     isLoading = true;
     setstate();
