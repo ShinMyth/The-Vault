@@ -1,4 +1,4 @@
-# The-Vault
+# the_vault
 
 A new Flutter project.
 
